@@ -29,5 +29,32 @@
       marginLeft: 0,
      //backgroundColor:'black'
     },
+    myCity: {
+      fontSize: 34, // Adjust the font size as needed for your design
+      fontWeight:'bold',
+      color: 'aqua',
+      marginTop:42,
+     // marginLeft: 130,
+    },
+          input: {
+            padding:5,
+            
+      },
+            searchContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: 'gray',
+        borderRadius: 8,
+        paddingLeft: 8,
+        marginTop:40,
+        marginBottom:4,
+      },
+      button:{
+        backgroundColor: 'blue', // Background color
+        paddingHorizontal: 20, // Horizontal padding
+        paddingVertical: 5,   // Vertical padding
+        borderRadius: 5,  
+      },
   });
   export default styles;

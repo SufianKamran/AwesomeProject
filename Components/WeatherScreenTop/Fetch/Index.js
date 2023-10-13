@@ -1,40 +1,34 @@
 
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ActivityIndicator, Image } from 'react-native';
-import images from '../../assets/indx';
-import { fetchWeatherData } from '../API'; // Adjust the import path as needed
+import images from '../../../assets/indx';
+import { fetchWeatherData } from '../../API'; // Adjust the import path as needed
 import styles from './Styles';
 
 function kelvinToCelsius(kelvin) {
   return (kelvin - 273.15).toFixed(0);
 }
 
-const Fetch = () => {
+const Fetch = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetchWeatherData('Lahore'); 
-      setWeatherData(data);
-      setLoading(false);
-    }
+  async function fetchData(cityName) {
+    setLoading(true);
+    const data = await fetchWeatherData(cityName);
+    setWeatherData(data);
+    setLoading(false);
+  }
 
-    fetchData();
-  }, []);
+  useEffect(() => {
+    fetchData(city); // Fetch weather data based on the passed city prop
+  }, [city]);
 
   const imageMappings = {
     'Clear': 'sunny',
     'Clouds': 'cloud',
     'Rain': 'moderate_rain',
-    // Add more mappings as needed for other weather conditions
   };
-  
-  // const isNighttime = () => {
-  //   const now = new Date();
-  //   const currentHour = now.getHours();
-  //   return currentHour >= 18 || currentHour < 5;
-  // }
 
   if (loading) {
     return <ActivityIndicator size="large" />;
@@ -47,14 +41,11 @@ const Fetch = () => {
 
     // Get the corresponding image key from the mapping or use 'sunny' as default
     const imageKey = imageMappings[weatherCondition] || 'sunny';
-//     const isNight = isNighttime();
-
-  // Use 'night' image if it's nighttime, otherwise use the daytime image
-//  const imageSource = isNight ? images['night'] : images[imageKey];
 
     return (
       <View style={styles.container}>
          {/* <Image source={imageSource} style={styles.img} /> */}
+         <Text style={styles.myCity}>{city}</Text>
         <Image source={images[imageKey]} style={styles.img} />
         <Text style={styles.temp}>{kelvinToCelsius(weatherData.list[0].main.temp)}°C</Text>
         <Text style={styles.condition}>{weatherData.list[0].weather[0].main}</Text>

@@ -3,14 +3,22 @@ import { StyleSheet, View, ImageBackground, Dimensions } from 'react-native';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigation from './Components/Navigation';
-//import Weather from './Screens';
+import Weather from './Screens';
+import { Provider } from 'react-redux';
+import store from './Redux/Store';
 
 export default function App() {
+
   return (
-    // <Weather />
-    <NavigationContainer>
-      <StackNavigation />
+    <Provider store={store}>
+      <NavigationContainer>
+    <StackNavigation />
     </NavigationContainer>
+  </Provider>
+    // <Weather />
+    // <NavigationContainer>
+    //   <StackNavigation />
+    // </NavigationContainer>
   );
 }
 

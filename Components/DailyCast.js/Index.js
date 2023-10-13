@@ -26,12 +26,10 @@ const DailyCast = ({ hourlyForecast }) => {
       return (kelvin - 273.15).toFixed(0); // Fix decimal places as needed
     }
   
-    const isNight = date.getHours() >= 18 || date.getHours() < 6; // Assuming night is between 6 PM and 6 AM
+   // const isNight = date.getHours() >= 18 || date.getHours() < 6; // Assuming night is between 6 PM and 6 AM
     const weatherCondition = item?.weather[0]?.main.toLowerCase();
 
     const imageMappings = {
-      'clear': isNight ? 'night' : 'sunny',
-    'clouds': isNight ? 'night' : 'cloud',
       'clear': 'sunny',
       'clouds': 'cloud',
       'rain': 'heavy_rain',
@@ -39,7 +37,6 @@ const DailyCast = ({ hourlyForecast }) => {
       'misty' : 'mist',
       'haze' : 'mist',
       'partly cloudy' : 'partly_cloudy',
-      'partly cloudy': isNight ? 'night' : 'partly_cloudy',
       'moon' : 'night',
       // Add more mappings as needed
     };

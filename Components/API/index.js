@@ -1,5 +1,4 @@
 
-//import React, {  useState } from 'react';
 const API_Key = '1c3b611c2ee99ff1089c8beb0957b076';
 
 export async function fetchWeatherData(cityName) {
@@ -19,6 +18,8 @@ export async function fetchWeatherData(cityName) {
     return null;
   }
 }
+
+
 // import { Text, View, StyleSheet, ActivityIndicator, Image } from 'react-native';
 
 // const API_Key = '1c3b611c2ee99ff1089c8beb0957b076';
