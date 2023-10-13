@@ -7,9 +7,6 @@
 // import {partly_cloudy } from  "../assets/indx";
 // import styles from './Styles';
 
-
-
-
 // const API_Key = "1c3b611c2ee99ff1089c8beb0957b076";
 
 // const Weather = (props) => {
