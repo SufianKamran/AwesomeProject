@@ -1,24 +1,17 @@
-
 // store.js
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import weatherReducer from '../Reducers/WeatherReducer';
+import watchFetchWeather from '../Saga/saga';
 
-import { createStore } from 'redux';
-import rootReducer from '../Reducers/WeatherReducer';
-import thunk from 'redux-thunk';
+const rootReducer = combineReducers({
+  weather: weatherReducer,
+});
 
-const store = createStore(rootReducer);
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(watchFetchWeather);
 
 export default store;
-
-
-// import { createStore, applyMiddleware, combineReducers } from 'redux';
-// import thunk from 'redux-thunk';
-
-// import WeatherReducer from './Reducers/WeatherReducer';
-
-// const rootReducer = combineReducers({
-//   weather: WeatherReducer,
-// });
-
-// const store = createStore(rootReducer, applyMiddleware(thunk));
-
-// export default store;

@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
         paddingRight: 8,
       },
       input: {
-       
         flex: 0.5,
       },
  });
  export default styles;
+ 

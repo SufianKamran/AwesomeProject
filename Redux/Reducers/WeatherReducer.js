@@ -1,45 +1,43 @@
-// reducers.js
-
-const initialState = {
-  searchText: '',
-  navigation: null,
-};
-
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'SET_SEARCH_TEXT':
-      return { ...state, searchText: action.payload };
-    case 'NAVIGATE_TO_HOME':
-      action.payload.navigate('Home');
-      return state;
-    default:
-      return state;
-  }
-};
-
-export default rootReducer;
-
-
-// import { GET_WEATHER, SET_ERROR } from '../type';
-
-// const initialState = {
-//   data: null,
-//   error: '',
-// };
-
-// export default (state = initialState, action) => {
-//   switch (action.type) {
-//     case GET_WEATHER:
-//       return {
-//         data: action.payload,
-//         error: '',
-//       };
-//     case SET_ERROR:
-//       return {
-//         ...state,
-//         error: action.payload,
-//       };
-//     default:
-//       return state;
-//   }
-// };
+// weather/reducers.js
+import {
+    FETCH_WEATHER_SUCCESS,
+    FETCH_WEATHER_FAILURE,
+    FETCH_WEATHER_REQUEST
+  } from '../Actions/WeatherAction';
+  
+  const initialState = {
+    weather: {},
+    loading: false,
+    error: null,
+  };
+  
+  const weatherReducer = (state = initialState, action) => {
+    switch (action.type) {
+      case FETCH_WEATHER_REQUEST:
+        return {
+          ...state,
+          loading: true,
+          error: null,
+        };
+      case FETCH_WEATHER_SUCCESS:
+        return {
+          ...state,
+          weather: {
+            ...state.weather,
+            [action.city]: action.data,
+          },
+          loading: false,
+        };
+      case FETCH_WEATHER_FAILURE:
+        return {
+          ...state,
+          loading: false,
+          error: action.error,
+        };
+      default:
+        return state;
+    }
+  };
+  
+  export default weatherReducer;
+  

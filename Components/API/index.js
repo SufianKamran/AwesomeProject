@@ -1,4 +1,4 @@
-
+//API.js
 const API_Key = '1c3b611c2ee99ff1089c8beb0957b076';
 
 export async function fetchWeatherData(cityName) {
@@ -9,15 +9,37 @@ export async function fetchWeatherData(cityName) {
 
     if (response.status === 200) {
       const data = await response.json();
+      console.log('API response:', data); // Move the log statement here
       return data;
     } else {
       return null;
     }
   } catch (error) {
-    console.error('Error fetching data:', error);
+    // console.error('Error fetching data:', error);
     return null;
   }
 }
+
+
+// const API_Key = '1c3b611c2ee99ff1089c8beb0957b076';
+
+// export async function fetchWeatherData(cityName) {
+//   const API = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_Key}`;
+  
+//   try {
+//     const response = await fetch(API);
+
+//     if (response.status === 200) {
+//       const data = await response.json();
+//       return data;
+//     } else {
+//       return null;
+//     }
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//     return null;
+//   }
+// }
 
 
 // import { Text, View, StyleSheet, ActivityIndicator, Image } from 'react-native';

@@ -1,15 +1,16 @@
-import { Dimensions, StyleSheet } from 'react-native';
 
+import { Dimensions, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    //marginTop:100,
   },
   temp: {
     textAlign: 'center',
     fontWeight: 'bold',
-    color: 'black',
+    color: 'aqua',
     fontSize: 20,
     marginTop: 4,
     marginLeft: 10,
